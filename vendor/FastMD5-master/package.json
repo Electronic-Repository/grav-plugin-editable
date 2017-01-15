@@ -1,0 +1,26 @@
+{
+  "name": "FastMD5",
+  "version": "2.0.0",
+  "description": "Fast JavaScript MD5 library",
+  "author": "iReal",
+  "main": "build/md5.js",
+  "bugs": "https://github.com/iReal/FastMD5/issues",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iReal/FastMD5"
+  },
+  "keywords": [
+    "fast",
+    "md5",
+    "fastmd5",
+    "performance"
+  ],
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-include": "^2.0.2",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.4.1"
+  }
+}

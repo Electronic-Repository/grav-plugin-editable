@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>FastMD5</title>
+		<meta charset="utf-8">
+		<script src="build/md5.min.js"></script>
+		<script src="js/md5jkm.js"></script>
+		<script src="js/js-md5.js"></script>
+		<script src="js/store.js"></script>
+		<link href="css/style.css" rel="stylesheet">
+	</head>
+	<body>
+		<div id="win">
+			<div id="menu">
+				<div id="menu-tests">Tests</div>
+				<div id="menu-benchmark">Benchmark</div>
+			</div>
+			<div id="loading">Loading...<br><noscript>Enable JavaScript at first!</noscript></div>
+			<div id="content">
+				<div id="content-tests">
+					<div id="info-tests" class="info"><b>The purpose of these tests</b> is to eliminate any possible errors caused by incorrect work of the library.</div>
+
+					<div id="run-tests" class="button-1">Run Tests</div>
+					<table id="content-tests-table" cellpadding="0" cellspacing="0">
+						<tr>
+							<td width="50%">NAME</td>
+							<td width="50%">STATE</td>
+						</tr>
+					</table>
+				</div>
+				<div id="content-benchmark">
+					<div id="info-benchmark" class="info">A simple tool to compare performance of some MD5 libraries.</div>
+
+					<div id="run-benchmark" class="button-1">Run Benchmark</div>
+					<table id="content-benchmark-table" cellpadding="0" cellspacing="0">
+						<tr>
+							<td width="50%">NAME</td>
+							<td width="30%">TIME</td>
+							<td width="20%">EFFICIENCY</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<script src="js/ui.js"></script>
+	</body>
+</html>

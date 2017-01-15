@@ -1,0 +1,31 @@
+name: Editable
+version: 0.1.0
+testing: true
+description: '**Editable** adds front-end editing to Grav'
+icon: edit
+author:
+  name: Ron Wardenier
+  email: ron@wardenier.com
+homepage: https://github.com/bleutzinn/grav-plugin-editable
+demo: 
+keywords: plugin, editor, wysiwyg, markdown, editing, editable, front-end ,in-line, in-context
+bugs: https://github.com/bleutzinn/grav-plugin-editable/issues
+docs: https://github.com/bleutzinn/grav-plugin-editable/blob/dev/README.md
+license: MIT
+
+dependencies:
+  - shortcode-core
+
+form:
+  validation: strict
+  fields:
+    enabled:
+      type: toggle
+      label: Plugin Enabled
+      highlight: 1
+      default: 1
+      options:
+        1: Enabled
+        0: Disabled
+      validate:
+        type: bool

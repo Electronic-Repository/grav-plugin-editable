@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>FastMD5 files hashing</title>
+		<meta charset="utf-8">
+		<script src="../build/md5.min.js" type="text/javascript"></script>
+	</head>
+	<body>
+		Select a file to hash: <input type="file" id="file_input">
+		<div id="file_hash"></div>
+
+		<script type="text/javascript">
+		+function(g) {
+			if(!(g.File && g.FileReader && g.FileList && g.Blob))
+				return console.log("FileAPI isn't supported in your browser!");
+
+			if(!(g.ArrayBuffer && g.Uint8Array))
+				return console.log("Typed Arrays aren't supported!");
+
+			var fileHashElem = document.getElementById("file_hash");
+
+			document.getElementById("file_input").addEventListener("change", function(event) {
+				var file = event.target.files[0];
+
+				if(!file)
+					return console.log("Failed to load the file!");
+
+				var reader = new FileReader();
+
+				reader.onload = function(event) {
+					var buffer = event.target.result,
+						bytes = new Uint8Array(buffer),
+						data = "";
+
+					for(var i = 0, j = bytes.length;i < j;i++)
+						data += String.fromCharCode(bytes[i]);
+
+					fileHashElem.innerHTML = "MD5: " + md5(data, true);
+				};
+
+				reader.onerror = function() {
+					console.log("Failed to read the file!");
+				};
+
+				reader.readAsArrayBuffer(file);
+			}, false);
+		}(window);
+		</script>
+	</body>
+</html>
