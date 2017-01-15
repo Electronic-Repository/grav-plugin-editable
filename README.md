@@ -15,7 +15,7 @@ At the moment two editors are available: SimpleMDE and ContentTools.
 - [SimpleMDE demo](https://wardenier.eu/simplemde-demo/)
 - [ContentTools demo](https://wardenier.eu/contenttools-demo/)
 
-Uername: 'john', password: 'demo0123'. Note that the default content is re-loaded every half hour.
+Uername: 'john', password: 'Demo0123'. Note that the default content is re-loaded every half hour.
 
 
 ## Installation
@@ -43,12 +43,13 @@ This plugin is a modular component for Grav which requires [Grav](http://github.
 
 An Editor Add-on consists of the editor application plus all additional files needed for using that editor with the Editable plugin.
 
-These editor add-ons are available for use: SimpleMDE and ContentTools.
+Accompanying this version two editor add-ons are available for use: SimpleMDE and ContentTools.
 
 ### Installation
 
-Add-ons are placed in the folder `/your/site/grav/user/plugins/editable/editors`.
+Download the [SimpleMDE Add-on](https://github.com/bleutzinn/editable-simplemde-add-on) or the [ContentTools Add-on](https://github.com/bleutzinn/editable-contenttools-add-on) and unzip the downloaded file. Rename the resulting folder to `simplemde` or `contenttools`.
 
+Copy or move the `simplemde` or `contenttools` folder into `/your/site/grav/user/plugins/editable/editors`.
 
 
 ## Configuration
