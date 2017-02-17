@@ -1,7 +1,7 @@
 name: Editable
 version: 1.0.0
 testing: false
-description: '**Editable** adds front-end editing to Grav'
+description: '**Editable** adds Front-end Editing to Grav'
 icon: edit
 author:
   name: Ron Wardenier

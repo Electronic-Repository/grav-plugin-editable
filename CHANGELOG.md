@@ -2,7 +2,7 @@
 ##  02/17/2017
 
 1. [](#new)
-    * First official release
+    * First official release.
 
 # v0.1.0
 ##  01/15/2017
