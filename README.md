@@ -2,15 +2,12 @@
 
 The **Editable** Plugin for [Grav CMS](http://github.com/getgrav/grav) enables users to edit page content in the front-end. So called 'editable content' can either be a full page or one or more regions on a page.
 
-
-> **Note: This plugin is a test release and not ready for production websites.**
-
 All page content is stored in normal Grav pages. Any uploaded media is stored in the same folder as the corresponding page.
 
 The Editable plugin functions as a generic core which provides all functionality for a range of front-end editors which can be installed as [add-ons](#add-ons).   
-At the moment two editors are available: SimpleMDE and ContentTools.
+At the moment two editors are available as add-ons: SimpleMDE and ContentTools.
 
-## Demo
+## Demo's
 
 - [SimpleMDE demo](https://wardenier.eu/simplemde-demo/)
 - [ContentTools demo](https://wardenier.eu/contenttools-demo/)
@@ -39,19 +36,6 @@ At least one Editor Add-on must be installed as well. Read about how to download
 
 This plugin is a modular component for Grav which requires [Grav](http://github.com/getgrav/grav) and the [Error](https://github.com/getgrav/grav-plugin-error), [Problems](https://github.com/getgrav/grav-plugin-problems), [Login](https://github.com/getgrav/grav-plugin-login) and [Shortcode Core](https://github.com/getgrav/grav-plugin-shortcode-core) plugins to operate.
 
-## Add-ons <a id="add-ons"></a>
-
-An Editor Add-on consists of the editor application plus all additional files needed for using that editor with the Editable plugin.
-
-Accompanying this version two editor add-ons are available for use: SimpleMDE and ContentTools.
-
-### Installation
-
-Download the [SimpleMDE Add-on](https://github.com/bleutzinn/editable-simplemde-add-on) or the [ContentTools Add-on](https://github.com/bleutzinn/editable-contenttools-add-on) and unzip the downloaded file. Rename the resulting folder to `simplemde` or `contenttools`.
-
-Copy or move the `simplemde` or `contenttools` folder into `/your/site/grav/user/plugins/editable/editors`.
-
-
 ## Configuration
 
 To edit the configuration, first copy `editable.yaml` from the `user/plugins/editable` folder to your `user/config/plugins` folder and only edit that copy. 
@@ -74,6 +58,17 @@ Either turn Caching Off in the Admin panel or use this setting in the `system.ya
 cache:
   enabled: false
 ```
+
+
+## Add-ons <a id="add-ons"></a>
+
+An Editor Add-on consists of the editor application plus all additional files needed for using that editor with the Editable plugin.
+
+### Installation
+
+Download the [SimpleMDE Add-on](https://github.com/bleutzinn/editable-simplemde-add-on) or the [ContentTools Add-on](https://github.com/bleutzinn/editable-contenttools-add-on) and unzip the downloaded file. Rename the resulting folder to `simplemde` or `contenttools`.
+
+Copy or move the `simplemde` or `contenttools` folder into `/your/site/grav/user/plugins/editable/editors`.
 
 
 ## Front-end User Accounts
@@ -101,8 +96,7 @@ active_admin: false
 editor: simplemde
 editable_self: true
 ```
-
-#### 
+This will allow front-end users to edit page content right on the page. 
 
 ### Editable Content Modes
 
@@ -134,7 +128,7 @@ A typical editable region shortcode looks like:
 
 The shortcode will be replaced by the content of the page `introduction` wrapped in a `div` or `textarea` element to make it editable by the editor in use. Note that in this example there is no preceding `/` in the name value, which indicates that the page `introduction` is and must be a child page. To refer to non child pages an absolute path must be specified, e.g. `/about-us`.
 
-> Note: The page the shortcode refers to with the name parameter must exist. This version does not yet create the page so you must first create the page. 
+> Note: The page the shortcode refers to with the name parameter must exist !
 
 ### Editors 
 
