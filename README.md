@@ -1,3 +1,55 @@
+# This is a fork of grav-plugin-editable
+
+It contains a fix to allow content to be editable when nested deep in folder hierarchy.
+
+```
+/pages
++	/01.home
++		/page1
++			default.md
++		/page2
++			default.md
++		/page3
++			/sub-category-1
++				default.md
++			/sub-category-2
++				default.md
+```
+
+default.md should now be editable, no matter how nested it may be.
+
+## Old-school hacker style explaination:
+
+removed :
+
+```
+default:
+		throw new \Exception('Unsupported action: "' . $target . '"');
+```
+
+I did not read, nor did I spend the time to accurately gauge the original authors intent. It could prove to be an issue later, but all it currently did was throw an exception for an unsupported action, where supported actions are 'pages', 'images', 'files?', 'approve'.
+
+removed page case and transitioned it to default :
+
+```
+		$output = $resource->saveContent($page);
+		$this->setHeaders();
+		echo json_encode($output);
+		break;
+```
+
+then fixed
+
+```
+$page = $pages->dispatch('/' . $this->getIdentifier(), false);
+```
+
+using another solution.
+
+This fix was brought to you by being unemployed. PS. I am not maintaining this fork. I have not extensively tested it, but I am using it. If you happen to fix it properly (professionally)? I'd be happy to know about it. Here's my couple of hours back to the community. PS I'm not a php programmer, just a miscellaneous programmer.
+
+Thank you 'bleutzinn' for this excellent plugin.
+
 # Editable Plugin
 
 The **Editable** Plugin for [Grav CMS](http://github.com/getgrav/grav) enables users to edit page content in the front-end. So called 'editable content' can either be a full page or one or more regions on a page.
@@ -31,14 +83,14 @@ Note that other plugins upon which this plugin depends must be installed also if
 
 At least one Editor Add-on must be installed as well. Read about how to download and install add-ons in the section about [add-ons](#add-ons).   
 
-	
+
 ## Dependencies
 
 This plugin is a modular component for Grav which requires [Grav](http://github.com/getgrav/grav) and the [Error](https://github.com/getgrav/grav-plugin-error), [Problems](https://github.com/getgrav/grav-plugin-problems), [Login](https://github.com/getgrav/grav-plugin-login) and [Shortcode Core](https://github.com/getgrav/grav-plugin-shortcode-core) plugins to operate.
 
 ## Configuration
 
-To edit the configuration, first copy `editable.yaml` from the `user/plugins/editable` folder to your `user/config/plugins` folder and only edit that copy. 
+To edit the configuration, first copy `editable.yaml` from the `user/plugins/editable` folder to your `user/config/plugins` folder and only edit that copy.
 
 The default `editable.yaml` file looks like:
 
@@ -96,7 +148,7 @@ active_admin: false
 editor: simplemde
 editable_self: true
 ```
-This will allow front-end users to edit page content right on the page. 
+This will allow front-end users to edit page content right on the page.
 
 ### Editable Content Modes
 
@@ -106,7 +158,7 @@ Editable Content mode is about what content is configured as editable and how. T
 
 The main scope of front-end editing possibilities is determined by the `editable_self` configuration variable.
 
-The default setting `editable_self: false` prevents complete pages to be editable. 
+The default setting `editable_self: false` prevents complete pages to be editable.
 When `editable_self: true` is set in the `user/config/plugins/editable.yaml` configuration file all pages will be editable in the front-end.
 
 On a per page basis, setting `editable_self` in a page's frontmatter makes that entire page content editable in the front-end. The correct YAML to do so in page frontmatter is:
@@ -130,7 +182,7 @@ The shortcode will be replaced by the content of the page `introduction` wrapped
 
 > Note: The page the shortcode refers to with the name parameter must exist !
 
-### Editors 
+### Editors
 
 What an editor can do depends on the editor's features and the way it is configured. The editor specific configuration is done by editing the Javascript config file for that editor, for example `user/plugins/editable/editors/simplemde/js/simplemde_config.js`.   
 The configuration per bundled editor is fairly basic and just enough for a decsent demonstration of it's use with the Editable plugin in Grav.

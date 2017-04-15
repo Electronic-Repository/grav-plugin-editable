@@ -92,8 +92,8 @@ class EditablePlugin extends Plugin
             $file = __DIR__.'/editors/'.$editor.'/classes/' . $editor . 'processing.php';
             if (file_exists($file)) {
                 require_once $file;
-                $resourceClassName = '\Grav\Plugin\Editable\\' . ucfirst($editor) . 'Processing'; 
-                $resource = new $resourceClassName($this->grav); 
+                $resourceClassName = '\Grav\Plugin\Editable\\' . ucfirst($editor) . 'Processing';
+                $resource = new $resourceClassName($this->grav);
                 $resource->addAssets();
             }
             else {
@@ -149,7 +149,7 @@ class EditablePlugin extends Plugin
         $paths = $this->grav['uri']->paths();
         $paths = array_splice($paths, 1);
         $target = $paths[0];
-        $page = $pages->dispatch('/' . $this->getIdentifier(), false);
+        $page = $pages->dispatch(str_replace("/edtblapi/pages","",$this->grav['uri']->route()), false);
         if ($page == null) {
             // Page does not exist
             $this->setErrorCode(404);
@@ -160,14 +160,9 @@ class EditablePlugin extends Plugin
         $file = __DIR__.'/editors/'.$editor.'/classes/' . $editor . 'processing.php';
         if (file_exists($file)) {
             require_once $file;
-            $resourceClassName = '\Grav\Plugin\Editable\\' . ucfirst($editor) . 'Processing'; 
-            $resource = new $resourceClassName($this->grav); 
+            $resourceClassName = '\Grav\Plugin\Editable\\' . ucfirst($editor) . 'Processing';
+            $resource = new $resourceClassName($this->grav);
             switch ($target) {
-            case 'pages':
-                $output = $resource->saveContent($page);
-                $this->setHeaders();
-                echo json_encode($output);
-                break;
             case 'approve': // unneeded when saveContent can do batch save
                 $output = $resource->approveContent($page);
                 $this->setHeaders();
@@ -185,7 +180,10 @@ class EditablePlugin extends Plugin
                 echo json_encode($output);
                 break;
             default:
-                throw new \Exception('Unsupported action: "' . $target . '"');
+                $output = $resource->saveContent($page);
+                $this->setHeaders();
+                echo json_encode($output);
+                break;
             }
         }
         else {
